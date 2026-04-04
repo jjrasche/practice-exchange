@@ -39,4 +39,3 @@ Federated learning infrastructure where individuals learn by doing, their doing 
 - `docs/development-plan.md` -- MVP through v3 roadmap with cost projections
 - `docs/social-contracts.md` -- Circle social contract data model, templates, JSON schema
 - `docs/moderation.md` -- Automated moderation pipeline, CLIP coherence, gardener model
-- `docs/protocol.md` -- Personal neuroplasticity protocol (user zero content)
