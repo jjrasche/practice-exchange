@@ -3,6 +3,7 @@ import { useCamera } from '../hooks/useCamera'
 import { CameraViewfinder } from './CameraViewfinder'
 import { PhotoNarrator } from './PhotoNarrator'
 import { PhotoStrip } from './PhotoStrip'
+import { Button } from './ui/button'
 import type { SessionSlide, Tap } from '../types'
 
 type SessionStep = 'camera' | 'narrate' | 'review'
@@ -66,28 +67,28 @@ export function SessionCreator({ onComplete, onDiscard }: SessionCreatorProps) {
 
   if (step === 'review') {
     return (
-      <div style={{ background: '#000', minHeight: '100vh', color: 'white' }}>
-        <h2 style={{ padding: '1rem', margin: 0 }}>Review your session</h2>
+      <div className="min-h-svh">
+        <h2 className="p-4 m-0 text-lg font-semibold">Review your session</h2>
         <PhotoStrip photos={slides} />
-        <p style={{ padding: '1rem', color: '#aaa' }}>
+        <p className="p-4 text-muted-foreground text-sm">
           {slides.length} slides. Each has a photo, your narration, and any points you highlighted.
           This will be processed into a standardized session.
           Approve or discard — no editing.
         </p>
-        <div style={{ padding: '1rem', display: 'flex', gap: '1rem' }}>
-          <button onClick={() => onComplete(slides)} style={approveButtonStyle}>
+        <div className="px-4 flex gap-3">
+          <Button onClick={() => onComplete(slides)}>
             Approve
-          </button>
-          <button onClick={discardSession} style={discardButtonStyle}>
+          </Button>
+          <Button variant="destructive" onClick={discardSession}>
             Discard
-          </button>
+          </Button>
         </div>
       </div>
     )
   }
 
   return (
-    <div style={{ background: '#000', minHeight: '100vh', color: 'white' }}>
+    <div className="min-h-svh">
       {camera.isCameraActive ? (
         <>
           <CameraViewfinder
@@ -96,37 +97,37 @@ export function SessionCreator({ onComplete, onDiscard }: SessionCreatorProps) {
             photoCount={slides.length}
           />
           {slides.length >= MIN_SLIDES && (
-            <div style={{ padding: '0.75rem', textAlign: 'center' }}>
-              <button onClick={proceedToReview} style={secondaryButtonStyle}>
+            <div className="py-3 text-center">
+              <Button variant="outline" onClick={proceedToReview}>
                 Done — review session
-              </button>
+              </Button>
             </div>
           )}
         </>
       ) : (
-        <div style={{ padding: '2rem', textAlign: 'center' }}>
-          <h2 style={{ margin: '0 0 0.5rem' }}>
+        <div className="p-8 text-center">
+          <h2 className="mb-2 text-lg font-semibold">
             {slides.length === 0 ? 'Log a session' : 'Next photo'}
           </h2>
-          <p style={{ color: '#aaa', margin: '0 0 1.5rem' }}>
+          <p className="text-muted-foreground mb-6 text-sm">
             {slides.length === 0
               ? 'Capture moments from your practice. You\'ll narrate each one.'
               : `${slides.length} slide${slides.length !== 1 ? 's' : ''} so far. Take another or review.`
             }
           </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            <button onClick={camera.startCamera} style={approveButtonStyle}>
+          <div className="flex gap-3 justify-center">
+            <Button onClick={camera.startCamera}>
               Open camera
-            </button>
+            </Button>
             {camera.error && (
-              <p style={{ color: '#e00', marginTop: '1rem', fontSize: '0.875rem' }}>
+              <p className="text-destructive mt-4 text-sm">
                 {camera.error}
               </p>
             )}
             {slides.length >= MIN_SLIDES && (
-              <button onClick={proceedToReview} style={secondaryButtonStyle}>
+              <Button variant="outline" onClick={proceedToReview}>
                 Review session
-              </button>
+              </Button>
             )}
           </div>
         </div>
@@ -137,29 +138,4 @@ export function SessionCreator({ onComplete, onDiscard }: SessionCreatorProps) {
       )}
     </div>
   )
-}
-
-const approveButtonStyle: React.CSSProperties = {
-  padding: '0.75rem 1.5rem',
-  borderRadius: '4px',
-  border: 'none',
-  background: 'white',
-  color: 'black',
-  fontWeight: 600,
-  fontSize: '1rem',
-  cursor: 'pointer',
-}
-
-const secondaryButtonStyle: React.CSSProperties = {
-  ...approveButtonStyle,
-  background: 'transparent',
-  color: 'white',
-  border: '1px solid #444',
-}
-
-const discardButtonStyle: React.CSSProperties = {
-  ...approveButtonStyle,
-  background: 'transparent',
-  color: '#e00',
-  border: '1px solid #e00',
 }

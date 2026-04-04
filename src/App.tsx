@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { SessionCreator } from './components/SessionCreator'
+import { Button } from './components/ui/button'
 
 type AppView = 'home' | 'create'
 
@@ -19,37 +20,16 @@ export function App() {
   }
 
   return (
-    <div style={{
-      background: '#000',
-      minHeight: '100vh',
-      color: 'white',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '2rem',
-    }}>
-      <h1 style={{ fontSize: '1.5rem', fontWeight: 400, margin: '0 0 0.5rem' }}>
+    <div className="flex min-h-svh flex-col items-center justify-center p-8">
+      <h1 className="text-2xl font-normal mb-2">
         practice.exchange
       </h1>
-      <p style={{ color: '#666', margin: '0 0 2rem', textAlign: 'center' }}>
+      <p className="text-muted-foreground mb-8 text-center">
         Learn by doing. Your doing becomes content.
       </p>
-      <button
-        onClick={() => setView('create')}
-        style={{
-          padding: '0.75rem 1.5rem',
-          borderRadius: '4px',
-          border: 'none',
-          background: 'white',
-          color: 'black',
-          fontWeight: 600,
-          fontSize: '1rem',
-          cursor: 'pointer',
-        }}
-      >
+      <Button size="lg" onClick={() => setView('create')}>
         Log a session
-      </button>
+      </Button>
     </div>
   )
 }

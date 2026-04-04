@@ -7,39 +7,18 @@ export function PhotoStrip({ photos, onRemove }: PhotoStripProps) {
   if (photos.length === 0) return null
 
   return (
-    <div style={{
-      display: 'flex',
-      gap: '0.5rem',
-      padding: '0.5rem',
-      overflowX: 'auto',
-      background: '#111',
-    }}>
+    <div className="flex gap-2 p-2 overflow-x-auto bg-secondary">
       {photos.map((photo, index) => (
-        <div key={photo.thumbnailUrl} style={{ position: 'relative', flexShrink: 0 }}>
+        <div key={photo.thumbnailUrl} className="relative shrink-0">
           <img
             src={photo.thumbnailUrl}
             alt={`Capture ${index + 1}`}
-            style={{ height: '4rem', borderRadius: '4px' }}
+            className="h-16 rounded"
           />
           {onRemove && (
             <button
               onClick={() => onRemove(index)}
-              style={{
-                position: 'absolute',
-                top: '-0.25rem',
-                right: '-0.25rem',
-                width: '1.25rem',
-                height: '1.25rem',
-                borderRadius: '50%',
-                border: 'none',
-                background: '#e00',
-                color: 'white',
-                fontSize: '0.75rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
+              className="absolute -top-1 -right-1 size-5 rounded-full border-none bg-destructive text-white text-xs cursor-pointer flex items-center justify-center"
               aria-label={`Remove photo ${index + 1}`}
             >
               x

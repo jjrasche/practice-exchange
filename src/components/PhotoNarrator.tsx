@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { useAudioRecorder } from '../hooks/useAudioRecorder'
+import { Button } from './ui/button'
 import type { Tap } from '../types'
 
 interface NarrationResult {
@@ -59,18 +60,15 @@ export function PhotoNarrator({ photoUrl, slideNumber, onComplete }: PhotoNarrat
   }
 
   return (
-    <div style={{ background: '#000', minHeight: '100vh', color: 'white' }}>
-      <div style={{ padding: '0.75rem 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ color: '#aaa', fontSize: '0.875rem' }}>
+    <div className="min-h-svh">
+      <div className="py-3 px-4 flex justify-between items-center">
+        <span className="text-muted-foreground text-sm">
           Photo {slideNumber}
         </span>
         {audio.isRecording && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <div style={{
-              width: '0.5rem', height: '0.5rem', borderRadius: '50%',
-              background: '#e00', animation: 'pulse 1s infinite',
-            }} />
-            <span style={{ color: '#e00', fontSize: '0.875rem' }}>Recording</span>
+          <div className="flex items-center gap-2">
+            <div className="size-2 rounded-full bg-destructive animate-[pulse_1s_infinite]" />
+            <span className="text-destructive text-sm">Recording</span>
           </div>
         )}
       </div>
@@ -78,66 +76,43 @@ export function PhotoNarrator({ photoUrl, slideNumber, onComplete }: PhotoNarrat
       <div
         ref={imageRef}
         onPointerDown={handleImageTap}
-        style={{ position: 'relative', width: '100%', touchAction: 'none' }}
+        className="relative w-full touch-none"
       >
         <img
           src={photoUrl}
           alt={`Capture ${slideNumber}`}
-          style={{ width: '100%', display: 'block' }}
+          className="w-full block"
         />
         {tapRipples.map((ripple) => (
           <div
             key={ripple.id}
-            style={{
-              position: 'absolute',
-              left: `${ripple.x}%`,
-              top: `${ripple.y}%`,
-              width: '2rem',
-              height: '2rem',
-              marginLeft: '-1rem',
-              marginTop: '-1rem',
-              borderRadius: '50%',
-              border: '2px solid white',
-              opacity: 0.8,
-              pointerEvents: 'none',
-              animation: 'tapRipple 0.8s ease-out forwards',
-            }}
+            className="absolute size-8 -ml-4 -mt-4 rounded-full border-2 border-white opacity-80 pointer-events-none animate-[tapRipple_0.8s_ease-out_forwards]"
+            style={{ left: `${ripple.x}%`, top: `${ripple.y}%` }}
           />
         ))}
       </div>
 
-      <div style={{ padding: '1rem', textAlign: 'center' }}>
+      <div className="p-4 text-center">
         {audio.isRecording ? (
           <>
-            <p style={{ color: '#aaa', margin: '0 0 0.75rem', fontSize: '0.875rem' }}>
+            <p className="text-muted-foreground mb-3 text-sm">
               Tap the photo to point at things while you talk
             </p>
-            <button onClick={finishNarration} style={primaryButtonStyle}>
+            <Button onClick={finishNarration}>
               Done
-            </button>
+            </Button>
           </>
         ) : (
           <>
-            <p style={{ color: '#aaa', margin: '0 0 0.75rem', fontSize: '0.875rem' }}>
+            <p className="text-muted-foreground mb-3 text-sm">
               What are you looking at here? What do you notice?
             </p>
-            <button onClick={audio.startRecording} style={primaryButtonStyle}>
+            <Button onClick={audio.startRecording}>
               Start talking
-            </button>
+            </Button>
           </>
         )}
       </div>
     </div>
   )
-}
-
-const primaryButtonStyle: React.CSSProperties = {
-  padding: '0.75rem 1.5rem',
-  borderRadius: '4px',
-  border: 'none',
-  background: 'white',
-  color: 'black',
-  fontWeight: 600,
-  fontSize: '1rem',
-  cursor: 'pointer',
 }
