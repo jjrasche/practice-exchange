@@ -15,17 +15,16 @@ Federated learning infrastructure where individuals learn by doing, their doing 
 - Open source everything: code, matching algorithm, financials
 - Patron-funded (Wikipedia model), no extraction, no VCs
 - Platform as pipes, not a brain -- no platform-level AI interpretation
-- Contribution is the price of admission, not money
+- Sharing is the pedagogy -- teaching what you practiced is how you learn it
 - Pseudonymous by default (DID identity, not anonymous)
 - Content is depersonalized (standardized format, face blur, no identifiable voice)
 - Federation-ready architecture but single-node for v1-v2
 
 ## Key Concepts
-- **Session:** atomic content unit -- depersonalized slideshow from photos + narration
-- **Circle:** small learning group with a social contract (meetings, deadlines, tasks)
-- **Trail:** your chronological documentation of sessions
-- **Save:** private bookmark that feeds your personal algorithm (silent signal)
-- **Contribution gate:** must contribute to consume (visitor -> member -> contributor -> sustained)
+- **Session:** atomic unit of practice -- photos + narration, depersonalized into a standardized artifact. What you put on the exchange.
+- **Circle:** time-bound learning cohort with a social contract (start date, end date, meetings, shared accountability). Not a community -- a cohort.
+- **Save:** private bookmark that feeds your personal algorithm. The only signal. Visible to no one.
+- **Contribution model:** sharing is the pedagogy, not a toll. Teaching what you practiced is how you internalize it. Tiers: visitor -> member -> contributor -> sustained.
 
 ## Commands
 - TBD -- project is in early concept/architecture phase, no code yet

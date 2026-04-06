@@ -14,11 +14,11 @@ Think: YouTube Shorts, but helpful, standardized, and you do not know who made t
 2. **Process.** The app turns it into a short, standardized session -- captioned slideshow with background music. Faces blurred, backgrounds dimmed, format consistent. All processing happens on your phone. Nothing leaves your device until you approve it.
 3. **Publish.** Your session enters the feed. It is pseudonymous -- tied to your persistent identity, but nobody knows your real name.
 4. **Discover.** Browse sessions matched to your interests. Save the ones that help you. The algorithm learns from your saves and your own contributions -- never from likes, views, or engagement metrics.
-5. **Connect.** After enough practice, find others on the same path. Form a circle -- a small group with a shared social contract. Learn together.
+5. **Connect.** After enough practice, find others on the same path. Form a circle -- a time-bound cohort with a shared social contract, start and end dates, and shared accountability. Learn together.
 
 ## What Makes It Different?
 
-- **You must contribute to consume.** Documenting your practice is the admission price, not money. Visitors get a sample. Contributors get the archive.
+- **Sharing is the pedagogy.** Teaching what you practiced is how you internalize it. Everyone has something to share. The contribution expectation isn't a gate -- it's the learning model. Visitors get a sample. Contributors get the archive.
 - **No engagement metrics.** No likes, no follows, no view counts. A "save" button feeds your own algorithm. Nobody else sees it. Ever.
 - **Pseudonymous, not anonymous.** Your identity is persistent and carries reputation, but it is not tied to your legal name. Content is depersonalized. The format is the same for everyone.
 - **You own your identity and data.** Cryptographic identity (DID). Social recovery through human guardians. Data exportable on demand.
