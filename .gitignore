@@ -9,3 +9,5 @@ Thumbs.db
 .claude/
 .playwright-mcp/
 test-results/
+playwright-report/
+.lighthouseci/
