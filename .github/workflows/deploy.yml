@@ -1,0 +1,10 @@
+name: Deploy
+on:
+  push:
+    branches: [master, main]
+jobs:
+  deploy:
+    uses: jjrasche/platform/.github/workflows/build-deploy.yml@master
+    with:
+      app_name: practice-exchange
+    secrets: inherit
